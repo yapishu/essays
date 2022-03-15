@@ -123,15 +123,17 @@ The preservation of form can be attributed to several factors: while the Scene e
 Beyond partition at the protocol layer, the Scene has institutions: release groups and topsites. Institutions allow a culture to pass itself across time without being bound to charismatic figures or individual power brokers. It is difficult to say how closely this aligns with the actual function of release groups with the distance of an outsider, but the lifecycles of successful groups are measured in years and decades, and members can be observed coming and going in NFO files. Release groups form to fill the need for specialized labor or access; it is unlikely that a single person, no matter how skilled, would have the specific combination of access, time, experience, and resources that allow a group to operate at a competitive level. They persist because they bring rewards to their members, bestowing pooled resources, communal benefits (topsite & media access), and corporate prestige for their members.
 
 
-###  insertion
-  
+`insertion`
+
+> flesh out stuff about being a criminal subculture, asabiyah, secret societies
+
 Institutionalization sheds light on another feature of the Scene -- its criminality. Individuals outside of or against the state tend to wither without a social structure to replace legitimate state functions. Successful outsiders form groups, and successful groups adapt and create structures to preserve themselves. Yakuza, 'Ndrangheta, and thieves-in-law
 
 Criminality is a fundamental feature of the Scene -- 
 
 Over time, immediate distribution of digital content has become a given,
   
-### /insertion
+`/insertion`
 
 
 Perhaps most importantly as far as mechanisms of persistence, the Scene has developed a social identity in-group dynamic, with barriers constructed and maintained between participants and the wider world. Even co-pirates on P2P networks are considered beneath them, held in the same regard as for-profit bootleggers or the normies buying physical media. The only meaningful token is participation, which is bound up with a social order illegible to the uninitiated. Demands for personal investment, recognition for individual achievement, and jargon for their trade all contribute to a system of meaning and tribal belonging. Participants find ways to memorialize the people and events in their hidden world, publishing newsletters with excerpts from exclusive IRC channels, and . "Creating an alternative reality is not enough. One must, it seems, cement it with magazines, documentation, and other persistent artifacts to perpetuate the game." Beyond publications and self-documentation, the game bleeds into the real world, where they are recognized as an unstoppable force of nature -- alternately ingenious hacker Robin Hoods, or malign criminals bent on impoverishing artists. The 
