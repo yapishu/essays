@@ -518,8 +518,6 @@ if a poke-ack variable (tang) is null, it's positive, otherwise it's a nack -- u
 
 for subscriptions, an agent might return a `fact` or a `kick` -- an update to all subscribers for a given path, or a removal from the subscription (can be everyone on a path or specified)
 
----
-
 #### pokes
 
 if an agent receives a poke, it gets handled by `++  on-poke`, which accepts a cage (mark and a vase, usually individually specified) and returns a `(quip card _this)` (list of events and new state)
@@ -593,7 +591,9 @@ the new agent could have an on-agent arm like this:
   |=  [=wire =sign:agent:gall]
   ^-  (quip card _this)
   ?+    wire  (on-agent:def wire sign)
+:: take the wire
       [%inc ~]
+:: test its value
     ?.  ?=(%poke-ack -.sign)
       (on-agent:def wire sign)
     ?~  p.sign
@@ -614,3 +614,121 @@ the new agent could have an on-agent arm like this:
 ```
 
 note how it tests the `wire` for the `inc` and `dec` values
+
+##### structures and marks
+
+we need to define a gall agent's types in the `/sur` dir
+
+example from the previous agent:
+
+```hoon
+=/  action  !<(?(%inc %dec) vase)
+```
+
+we can see here that action is producing a vase, containing a head with a union (like an enum) of possible pokes -- we're extricating the value from the union as 'action'
+
+example sur file for a todo app:
+
+```hoon
+|%
++$  id  @
++$  name  @t
++$  task  [=name done=?]
++$  tasks  (map id task)
++$  action
+  $%  [%add =name]
+      [%del =id]
+      [%toggle =id]
+      [%rename =id =name]
+  ==
++$  update
+  $%  [%add =id =name]
+      [%del =id]
+      [%toggle =id]
+      [%rename =id =name]
+      [%initial =tasks]
+  ==
+--
+```
+
+then we import like `/-  todo`
+
+`mark`s are filetypes; they're specified in `/mar`; also used for for converting between marks and revision control, and for exchanging data between agents
+
+all mark files have three arms: `grab` to convert to this mark, `grow` to convert this mark to another mark, and `grad` for revision control (don't worry about this one for now)
+
+simple example mar file, `mar/todo/action.hoon`:
+
+```hoon
+/-  todo
+|_  =action:todo
+++  grab
+  |%
+  ++  noun  action:todo
+:: this mark can only convert from nouns
+  --
+++  grow
+  |%
+  ++  noun  action
+:: this can only convert to nouns (already using nouns)
+  --
+++  grad  %noun
+--
+```
+
+typically you'd want to add json arms to grow and grab for communicating with a webui
+
+we can validate permissions of cards from foreign ships using the content of the `bowl`, which is cryptographically verified: 
+
+- local ship only
+
+`?>  =(src.bowl our.bowl)`
+
+- local ship and its moons
+
+`?>  (team:title our.bowl src.bowl)`
+
+- particular set of ships named `allowed`
+
+`?>  (~(has in allowed) src.bowl)`
+
+- member of a group in group-store
+
+`?>  .^(? %gx /(scot %p our.bowl)/group-store/(scot %da now.bowl)/groups/ship/~bitbet-bolbel/urbit-community/join/(scot %p src.bowl)/noun)`
+
+#### subscriptions
+
+an agent subscribes to a `path` and gets `facts` (updates) on a `wire`
+
+incoming subs handled by `on-watch` arm; examples of path parsing in chapter 8, permissions use the `src.bowl` as above
+
+typically updates on a path go to all subs, but the `on-watch` does allow you to send a one-time update to a new subscriber (eg initial state) by using an empty `(list path)` as below:
+
+```hoon
+:_  this
+:~  [%give %fact ~ %todo-update !>(`update:todo`initial+tasks)]
+==
+```
+
+(it's just `~`)
+
+producing normal cards on a path looks like this:
+
+```hoon
+:_  this
+:~  [%give %fact ~[/some/path /another/path] %some-mark !>('some data')]
+    [%give %fact ~[/some/path] %some-mark !>('more data')]
+    ....
+==
+```
+
+any arm can send facts to subscribers, eg `on-poke`
+
+example todo app:
+
+- sur file defines types for agents
+- mar files define filetypes (for conversion between agents)
+- `app/todo.hoon` publishes agents, mostly `on-poke` actions handling stuff the action types defined in sur
+    - both updates state and produces `fact`s
+- `app/todo-watcher.hoon` just acts a subscriber without state, prints when it gets a card
+    - uses on-poke to add or remove subs 

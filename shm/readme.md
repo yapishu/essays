@@ -16,7 +16,7 @@ Trusting your tools enough to defend yourself with them means being able to unde
 
 The best way to understand a tool is to use it. Our goal is to put the tools in your hands.
 
-Native Planet is an ideologically-motivated project. Our social coordination nexus -- our cooperative Schelling point -- is the desire to make self-hosting easier and better than letting someone else run software for you. The price of the latter has become clear -- be observed, monitored, bucketed, modeled. The advantage of the former will become increasingly obvious as time goes on. [tie this back to 'modeling' for trust]
+Native Planet is an ideologically-motivated project. Our social coordination nexus -- our cooperative Schelling point -- is the desire to make self-hosting easier and better than letting someone else run software for you. The price of the latter has become clear -- be observed, monitored, bucketed, modeled. The advantage of the former will become increasingly obvious as time goes on. [tie this back to 'modeling' for trust]v
 
 > i created my interior thoughts as a means of production for the corporation that owned the board i was posting to, and that commodity was being sold to other commodity/consumer entities as entertainment. that means that i sold my soul like a tennis shoe and i derived no profit from the sale of my soul. people who post frequently on boards appear to know that they are factory equipment and tennis shoes, and sometimes trade sends and email about how their contributions are not appreciated by management.
 
