@@ -732,3 +732,71 @@ example todo app:
     - both updates state and produces `fact`s
 - `app/todo-watcher.hoon` just acts a subscriber without state, prints when it gets a card
     - uses on-poke to add or remove subs 
+
+#### vanes
+
+vanes take `task`s and return `gift`s
+
+pass a task to a vane with a card: `[%pass path %arvo note-arvo]`
+
+example behn timers:
+
+```hoon
+[%pass /some/wire %arvo %b %wait (add ~m1 now.bowl)]
+[%pass /some/wire %arvo %c %warp our.bowl %base ~ %sing %u da+now.bowl /sys/kelvin]
+```
+
+`%b` is behn, `%c` is clay; the next bit is the task and parameters 
+
+any gifts that are returned after a task go to the agent's `on-arvo` arm
+
+#### scries
+
+scries are read requests in the global namespace; performed with `.^`; a scry has a `care` which is the kind of request -- `%x` care is typical for gall agent scries
+
+when a scry is delivered, all the agent receives is the care and the path -- eg `.^(update:store %gx /=graph-store=/keys/noun)` arrives as `/x/keys`
+
+scries handled by `on-peek`, which takes a `path` and returns a `(unit (unit cage))` -- the cage contains the data, the unit has the type; response will fail without type
+
+the easiest way to output data is:
+
+```hoon
+``noun+!>('some data')
+```
+
+examples of scry endpoints:
+
+```hoon
+++  on-peek
+  |=  =path
+  ^-  (unit (unit cage))
+  ?+    path  (on-peek:def path)
+      [%x %all ~]  ``noun+!>(data)
+  ::
+      [%x %has @ ~]
+    =/  who=@p  (slav %p i.t.t.path)
+    ``noun+!>(`?`(~(has by data) who))
+  ::
+      [%x %get @ ~]
+    =/  who=@p  (slav %p i.t.t.path)
+    =/  maybe-res  (~(get by data) who)
+    ?~  maybe-res
+      [~ ~]
+    ``noun+!>(`@t`u.maybe-res)
+  ==
+```
+
+in the full app, the `on-poke` takes `[@p @t]` and saves it in `(map @p @t)` called `data`
+
+`/x/all`, `/x/has/<@p>`, and `/x/get/<@p>`
+
+- /all returns `data`, the ship's state
+- /has checks whether a @p is in `data` and return a bool
+- /get gives the @t associated with a @p if present, or return `[~ ~]` if not
+
+you can scry them as follows:
+
+- `.^((map @p @t) %gx /=peeker=/all/noun)`
+- `.^(? %gx /=peeker=/has/~zod/noun)`
+- `.^(@t %gx /=peeker=/get/~zod/noun)`
+
