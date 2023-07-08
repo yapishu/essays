@@ -949,3 +949,31 @@ this takes in the `update`;
 we don't have a fronted that can send anything into this yet
 
 `;;` micmic is used to assert type validation for a value; eg if you lose type information for a noun you can reconstruct it; ex `;;(* '5')` will read the string of '5' as an atom and return 53; `;;(@ud 5)` will make it return the int
+
+
+> Construct a JSON reparser and mark
+>  Answer with the result of calling `json-to-user` from the previous question on the JSON string:
+
+```json
+{
+  "joined": 836179200,
+  "username": "thepaleking",
+  "name": [
+    "David",
+    "Foster",
+    "Wallace"
+  ],
+  "email": "infinite@jest.com"
+}
+```
+
+```hoon
++$  user
+  $:  username=@t
+      name=[first=@t mid=@t last=@t]
+      joined=@da
+      email=@t
+  ==
+```
+
+#### lesson 4
