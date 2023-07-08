@@ -661,11 +661,14 @@ simple example mar file, `mar/todo/action.hoon`:
 
 ```hoon
 /-  todo
+:: importing the todo structure
 |_  =action:todo
 ++  grab
   |%
   ++  noun  action:todo
 :: this mark can only convert from nouns
+:: passes the noun to the action struc
+:: basically (action:todo [some-noun])
   --
 ++  grow
   |%
@@ -800,3 +803,149 @@ you can scry them as follows:
 - `.^(? %gx /=peeker=/has/~zod/noun)`
 - `.^(@t %gx /=peeker=/get/~zod/noun)`
 
+#### failure
+
+you can pin helper core with `+*` like so:
+
+```hoon
+=<
+|_  =bowl:gall
++*  this      .
+    def   ~(. (default-agent this %.n) bowl)
+    hc    ~(. +> bowl)
+++  on-init
+```
+
+needs to be before the rest of the agent -- note `=<`, which inversely composes the helper core and agent so that the agent isn't inside the helper's subject; from there we can define private functions for the rest of the agent (eg giving them access to the bowl)
+
+
+### lesson 3
+
+grab arm handles conversion to mark
+
+grow handles conversions from mark
+
+grad is for revision control (ignore for now)
+
+ways mark files are used:
+- file type handlers (`+cat /===/gen/tally/hoon`)
+- for poke and peek types (`&noun` `%noun`)
+- for data validators (`%charlie-action`)
+- as data converters
+
+mark files are referred to on their path as a term constant; referring to it like `%todo-action` would invoke `/mar/todo/action.hoon`
+
+hoon represents json a little differently internally -- head-tagged cell representations:
+
+
+```hoon
+[ ~  
+ [ %o  
+     p  
+   { [p='lightblue' q=[%s p='#03a9f4']]  
+     [p='purple' q=[%s p='#9c27b0']]  
+     [p='black' q=[%s p='#000000']]  
+     [p='red' q=[%s p='#f44336']]  
+     [p='indigo' q=[%s p='#3f51b5']]  
+     [p='cyan' q=[%s p='#00bcd4']]  
+```
+
+this is weird but we need to decouple the meaning and representation of the data; when parsed, json turns into a unit (failure to parse will turn this will return a null, `?~` to test for this); once parsed, we can manipulate the values that are interesting to us
+
+`%o` is the tag for objects, see it in the head of an object; the `p` means first item in a cell; `%s` is string; both sides represent strings as cords; 
+
+if we start with json from the web, we convert it into the `$json` structure using `de:json:html`, then extract info with the `dejs:format` arms, which will convert it into specific values 
+
+if we want to go the other way to convert something back into json, we `enjs:format` and then `en:json:html` to turn it back into a string
+
+if we get a json string, we can `(de:json:html <var>)` to turn it into the $json struc, returning a unit; we can strip the unit stuff like `(need (de:json:html <var>))` to make the result a little simpler (strips outer cell with leading `~`)
+
+json doesnt distinguish between integers and floats so numbers will be represented as strings; the naive way to extricate stuff out of a $json is with lark notation but that obviously sucks and it doesn't preserve type info (eg extracting a loobean will just turn into an empty string); so a reparser is necessary to convert this stuff into useful hoon representations; for reparsing you need to be cognizant of expected value types, esp ints vs floats
+
+here is a small example of a reparser:
+
+```hoon
+=,  dejs:format
+%-  ot
+:~
+  [%name (at ~[so so so])]
+  [%member bo]
+  [%dues ni]
+==
+```
+
+`ot` is the parser that deals with objects; first it's going to extract the `%name` (matches head tag inside json) and assign it the type specified (`at` is array, list of 3 `so` -- @t strings); next extracts %member `bo` boolean and `ni` integer for %dues
+
+if we save this as `reparser` and apply it `(reparser <var>)`, it will return a tuple with everything in the right place: `[['Jon' 'Johnson' 'of Wisconsin'] %.y 123]`
+you could make one big reparser for everything and pull what you want out of the total result, or just pull out individual values per gate 
+
+normally we head tag with a term in our reparser cell but we can also use a cord; necessary for mixed-case keys
+
+our reparser's output can then be used to produce a poke to our agent, which returns a gift with a fact; the fact is converted using the mark to the %json mark, which is then turned back into a string
+
+here we extend the `%delta` action mark's grab arm
+
+ ```hoon
+ /-  *delta
+|_  act=action
+++  grow
+  |%
+  ++  noun  act
+  --
+++  grab
+  |%
+  ++  noun  action
+  ++  json
+    =,  dejs:format
+    |=  jon=json
+    ^-  action
+    %.  jon
+    %-  of
+    :~  [%push (ot ~[target+(se %p) value+ni])]
+        [%pop (se %p)]
+    ==
+  --
+++  grad  %noun
+--
+```
+
+there's now a `++json` arm which explicitly marks this as a gate that returns an action; we use `ot`, `se`, and `ni` to read and head-tag the `target` and `value` values; or we pop the target, whichever one matches with the data (ie keep popping until you find matching)
+
+modified update mark:
+
+```hoon
+/-  *delta
+|_  upd=update
+++  grow
+  |%
+  ++  noun  upd
+  ++  json
+    =,  enjs:format
+    ^-  ^json
+    ?-    -.upd
+      %pop   (frond 'pop' s+(scot %p target.upd))
+      %init  (frond 'init' a+(turn values.upd numb))
+      %push  %+  frond  'push'
+             %-  pairs
+             :~  ['target' s+(scot %p target.upd)]
+                 ['value' (numb value.upd)]
+    ==       ==
+  --
+++  grab
+  |%
+  ++  noun  update
+  --
+++  grad  %noun
+--
+```
+
+`enjs` will encode hoon values into $json marks; this is in the grow arm;
+
+this takes in the `update`; 
+- in `%pop`, `(scot %p target.upd)` turns the target into text; `pop` is put in front of it and `frond` turns the two into a single key-value pair
+- in `%init` we do something similar, except `turn` with `numb` turns the whole thing into an array
+- in `%push`, `pairs` does something like `frond` key-value pairs except for many instead of one
+
+we don't have a fronted that can send anything into this yet
+
+`;;` micmic is used to assert type validation for a value; eg if you lose type information for a noun you can reconstruct it; ex `;;(* '5')` will recast the string of '5' into an atom and return 53
