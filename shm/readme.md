@@ -1,6 +1,6 @@
 # Self-hosting manifesto
 
-## part 1: why we host
+## theory: why we host
 
 Feedback loops between technology and social organization are a throughline in
 history. Technology might be purely social -- a set of written or informal
@@ -76,16 +76,15 @@ period with no distinction between humans and agency; après moi, le réseau.
 > at last, i began to see that i had commodified myself. commodification means
 > that you turn something into a product which has a money-value. in the
 > nineteenth century, commodities were made in factories, which karl marx
-> called “the means of production.” capitalists were people who owned the
-> means of production, and the commodities were made by workers who were
-> mostly exploited. i created my interior thoughts as a means of production
-> for the corporation that owned the board i was posting to, and that
-> commodity was being sold to other commodity/consumer entities as
-> entertainment. that means that i sold my soul like a tennis shoe and i
-> derived no profit from the sale of my soul. people who post frequently on
-> boards appear to know that they are factory equipment and tennis shoes, and
-> sometimes trade sends and email about how their contributions are not
-> appreciated by management.
+> called “the means of production.” capitalists were people who owned the means
+> of production, and the commodities were made by workers who were mostly
+> exploited. i created my interior thoughts as a means of production for the
+> corporation that owned the board i was posting to, and that commodity was
+> being sold to other commodity/consumer entities as entertainment. that means
+> that i sold my soul like a tennis shoe and i derived no profit from the sale
+> of my soul. people who post frequently on boards appear to know that they are
+> factory equipment and tennis shoes, and sometimes trade sends and email about
+> how their contributions are not appreciated by management.
 
 > as if this were not enough, all of my words were made immortal by means of
 > tape backups. furthermore, i was paying two bucks an hour for the privilege
@@ -98,47 +97,48 @@ period with no distinction between humans and agency; après moi, le réseau.
 
 ---
 
-## part 2: they don't want you to know this, but every computer is a server
+## praxis: they don't want you to know this, but every computer is a server
 
 ### how to run a node in the den of your abode
 
-Most PCs and single board computers manufactured within the last ten years
-are well-suited to be converted into a sovereign personal server. Understanding
-the minimum technical requirements, choosing an operating system, and
-understanding remote access and controlare the keys to getting a personal
-server up and running. You an build a server from new components from scratch,
-or act resourcefully and build a perfectly capable server from parts and old
-devices you have laying around. 
+Most PCs and single board computers manufactured within the last ten years are
+well-suited to be converted into a sovereign personal server. Understanding the
+minimum technical requirements, choosing an operating system, and understanding
+remote access and controlare the keys to getting a personal server up and
+running. You an build a server from new components from scratch, or act
+resourcefully and build a perfectly capable server from parts and old devices
+you have laying around. 
 
 ### Selecting hardware
 
 Don't overlook the potential lying dormant in old laptops, retired desktops, or
 unused motherboards. Reclaiming junked or unused hardware not only saves
-resources, but in some cases may be your only viable option. Most computers
-are capable of most things that you want to use them for.
+resources, but in some cases may be your only viable option. Most computers are
+capable of most things that you want to use them for.
 
 #### Laptops
 
-Laptops may not be the first thing that 'personal server' conjures to mind,
-but they carry some advantages.
+Laptops may not be the first thing that 'personal server' conjures to mind, but
+they carry some advantages.
 
-**All-in-One** -- laptops are self-contained units with built-in display 
+**All-in-One** -- laptops are self-contained units with built-in display
 screens, keyboards, and trackpads. This can be useful in circumstances where
 you need direct access, like during initial setup or network outages.
 
-**Power failover** -- Laptops are equipped with batteries, which let it keep 
-running during power interruptions. In case of outages or fluctuations, 
-your server can continue running smoothly, ensuring uninterrupted access.
+**Power failover** -- Laptops are equipped with batteries, which let it keep
+running during power interruptions. In case of outages or fluctuations, your
+server can continue running smoothly, ensuring uninterrupted access.
 
-**Resource Efficiency** -- While old laptops might not match the processing power
-of modern systems, they are more than capable of handling basic server tasks
-such as file sharing, long-running background tasks, and P2P communications.
+**Resource Efficiency** -- While old laptops might not match the processing
+power of modern systems, they are more than capable of handling basic server
+tasks such as file sharing, long-running background tasks, and P2P
+communications.
 
 #### Desktop PCs
 
-Repurposing an old PC as a personal server offers some distinct advantages over 
-using a laptop or a single-board computer. They can often be obtained cheaply -- 
-look on ebay for used micro PCs.
+Repurposing an old PC as a personal server offers some distinct advantages over
+using a laptop or a single-board computer. They can often be obtained cheaply
+-- look on ebay for used micro PCs.
 
 **Power** -- PCs typically have the most powerful CPUs of any of the categories
 of devices used for personal servers (when compared to devices manufactured in
@@ -147,9 +147,9 @@ processing loads or many concurrent services, but comes with the tradeoff of
 increase power consumption.
 
 **Expandability** -- PC boards often have greater support for modular component
-replacement and upgrades. That middling microtower might be more than enough
-to act as a media server if you double the memory, and multiple disk drives
-can be useful in many contexts.
+replacement and upgrades. That middling microtower might be more than enough to
+act as a media server if you double the memory, and multiple disk drives can be
+useful in many contexts.
 
 **Compatibility** -- Commodity X64 PCs are typically well-supported by whatever
 OS you put on it, since Linux has robust support for most PC hardware.
@@ -157,29 +157,31 @@ OS you put on it, since Linux has robust support for most PC hardware.
 #### Single Board Computer (SBC)
 
 Opting for a Single Board Computer (SBC) such as a Raspberry Pi or a Latte
-Panda x86 as your personal server introduces its own advantages
-that set it apart from using a laptop or an old PC. 
+Panda x86 as your personal server introduces its own advantages that set it
+apart from using a laptop or an old PC. 
 
 - **Compact** -- you can hide these in your building's ventilation.
 
 - **Efficient** -- SBCs use very little power, and are typically designed to
-run on power carried over USB -- a few watts at ~5A is common, on par with a
-cell phone charger. This is low enough to run on auxiliary power sources for
-prolonged periods.
+  run on power carried over USB -- a few watts at ~5A is common, on par with a
+  cell phone charger. This is low enough to run on auxiliary power sources for
+  prolonged periods.
 
-- **Cheap** -- You can usually get one of these new for less than half the cost of
-even a cheap desktop PC. Personal servers don't need to be able to play CoD.
+- **Cheap** -- You can usually get one of these new for less than half the cost
+  of even a cheap desktop PC. Personal servers don't need to be able to play
+  CoD.
 
-- **Purposeful** -- SBCs often have hardware accomodations for particular use-cases,
-like network-attached storage, serving media, or IoT. This can reduce complexity and
-cost if it aligns with your desired use-case.
+- **Purposeful** -- SBCs often have hardware accomodations for particular
+  use-cases, like network-attached storage, serving media, or IoT. This can
+  reduce complexity and cost if it aligns with your desired use-case.
 
 ## Minimum specs
 
 Depending on the type of device you decide to use and how you plan to use your
-server, your minimum required specifications may vary. These are suggestions for
-general minimum specifications to ensure a lightweight and efficient personal
-server that fulfills the basic needs of sovereign peer-to-peer communications.
+server, your minimum required specifications may vary. These are suggestions
+for general minimum specifications to ensure a lightweight and efficient
+personal server that fulfills the basic needs of sovereign peer-to-peer
+communications.
 
 #### Memory (RAM)
 
@@ -193,77 +195,113 @@ simple mantra: "more memory is good".
 
 #### CPU
 
-CPUs are the main bottleneck on operational speed, but are notoriously difficult
-to directly compare to one another, since many variables must be accounted for --
-power draw, clock speed, core count, etc. It's best to bucket them by manufacturing
-date and general categories, like "2020 mobile processor" or "2017 desktop CPU",
-before making comparisons. 
+CPUs are the main bottleneck on operational speed, but are notoriously
+difficult to directly compare to one another, since many variables must be
+accounted for -- power draw, clock speed, core count, etc. It's best to bucket
+them by manufacturing date and general categories, like "2020 mobile processor"
+or "2017 desktop CPU", before making comparisons. 
 
-SBCs and Laptop boards will always have an integrated processor, which should be
-known and considered when you make the selection. OEM desktops are usually built
-around a particular CPU class or model but can be swapped out for another unit with
-the same socket specification.
+SBCs and Laptop boards will always have an integrated processor, which should
+be known and considered when you make the selection. OEM desktops are usually
+built around a particular CPU class or model but can be swapped out for another
+unit with the same socket specification.
 
-Generally speaking: newer is better. Moore's law holds, and a CPU released in 2022 
-is almost always going to be better than one from 2015. 
+Generally speaking: newer is better. Moore's law holds, and a CPU released in
+2022 is almost always going to be better than one from 2015. 
 
 ### Disk
 
 Disk is long-term storage for your device -- all content that persists between
-reboots. Some services require significant disk space, but many uses require little
-or no space to operate continuously for years. However, running services like
-Urbit or media servers require ample room for growth.
+reboots. Some services require significant disk space, but many uses require
+little or no space to operate continuously for years. However, running services
+like Urbit or media servers require ample room for growth.
 
-We strongly recommend solid state drives over SD cards or mechanical hard drives 
-as they are more durable and less susceptible to failure. You can connect your 
-SSD to your motherboard via USB, PCIE, or SATA connection -- while all of these 
-will work, a PCIE or SATA connection is preferred as these methods will ensure 
-you take full advantage of the speed of your SSD. 
+We strongly recommend solid state drives over SD cards or mechanical hard
+drives as they are more durable and less susceptible to failure. You can
+connect your SSD to your motherboard via USB, PCIE, or SATA connection -- while
+all of these will work, a PCIE or SATA connection is preferred as these methods
+will ensure you take full advantage of the speed of your SSD. 
 
 **Minimum Requirements**: 128GB SSD
 
 **Recommend Requirements**: ≥500GB SSD
 
-### Open Source Operating Systems + Software
+### Open Source Operating Systems & Software
 
 - **Linux** -- almost any personal server software you run is going to be built
-on top of Linux, whether you're aware of it or not. Gaining basic familiarity with
-operating a Linux device, especially from the command line, is a major capability
-boost and powerful s
+  on top of Linux, whether you're aware of it or not. Gaining basic familiarity
+  with operating a Linux device, especially from the command line, is a major
+  capability boost and powerful tool that makes many novel tasks tractable.
+  Everything else on this list is built on Linux, as it is the de facto
+  standard for free computing.
 
-- Colony OS
+- **ColonyOS** -- Native Planet's purpose-built Linux distribution for running
+  Groundseg (see below). Includes optional desktop environment, but designed
+  for 'headless' (remote, monitorless) usage.
 
-- GroundSeg & StarTram
+- **Urbit** -- A new internet from first principles. Urbit is an operating
+  system that runs on top of conventional server OSes and allows you to
+  maintain total ownership of your data and communications. Urbits have a
+  permanent identity and properties that allow it to belong to you in ways that
+  conventional software and computers cannot.
 
-- Casa OS
+- **GroundSeg & StarTram** -- Your server's Urbit orchestration layer.
+  GroundSeg is software designed to run Urbit on home PCs and abstract away the
+  complexities of Linux system administration. StarTram is the networking
+  backend that makes the web interface and hosted services accessible from
+  anywhere, available as a managed subscription service or a self-hosted
+  minimal-config deployment ("Anchor").
 
-- Umbrel
+- **Umbrel** -- Originally a personal server software suite designed around
+  Bitcoin, Umbrel now aims to be a general-purpose Linux server administration
+  framework and control center. Supports many popular self-hosted software
+  packages like cryptocurrency tools, media centers, and social software.
 
-- ClearOS
+- **Casa OS** -- Similar to Umbrel, another general-purpose personal server
+  suite meant for running conventional Linux softwar easily, aimed primarily at
+  ZimaBoard SBC personal servers.
 
-#### VPNs, NAT Traversal, and Third Party Relays
+### NAT, Relays and Firewalls
 
-In today's digital landscape, the importance of VPNs (Virtual Private Networks)
-cannot be overstated when it comes to hosting your own personal server. A VPN
-establishes a secure and encrypted connection between your server and the
-outside world, shielding your data from prying eyes and potential cyber
-threats. By masking your server's true IP address, a VPN ensures your online
-activities remain confidential and your server's vulnerabilities are
-significantly reduced. This layer of protection not only safeguards your
-personal information but also bolsters the security of the data stored on your
-server, making VPNs an indispensable tool for responsible and secure
-self-hosting.
+Hosting a personal server at home requires more than just installing software
+on a computer on your local network. Due to the finite nature of IPv4 address
+space, the devices running on your home network have local, or private IP
+addresses that by default aren't reachable by devices outside of that network.
+When it comes to making your software reachable from the broader internet, you
+have several options:
 
-Router punching, another critical aspect of self-hosting, plays a pivotal role
-in overcoming the challenges of network configurations and firewall
-restrictions. It enables your server to establish direct connections with
-external devices even if they are situated behind routers or firewalls. By
-skillfully navigating these barriers, router punching ensures seamless and
-efficient communication between your personal server and its users,
-irrespective of their geographic locations. This capability not only enhances
-user experience but also streamlines the accessibility of your hosted services,
-making them readily available to a wider audience.
+- Configuring networking rules
+- Cloud deployment
+- Private VPNs
+- Relaying your connection
 
+Configuring your own network is the most resourceful option -- if you
+understand the problem you're solving, you can configure static IP addresses
+and port forwarding rules to allow predetermined traffic patterns to flow
+across your network boundary in a defined way to make specific services
+publicly reachable.
+
+Running your software in the cloud sidesteps some of this complexity -- this
+tends to mean running your software in the cloud on a VPS (virtual private
+server). This option reduces the complexity of software deployment in some
+ways, but also means absolving yourself of sovereignty over your software.
+Instead of running your own services, you're renting CPU time on a mainframe.
+
+Private VPNs, like Tailscale, allow you to address the problem of public access
+without inheriting the security or privacy considerations that may entail. 
+Tailscale is a networking framework built on top of Wireguard, that allows you
+to create private networks that are reachable from the public internet. Instead
+of publicly exposing your service, you can connect to a private network of your
+devices running the Tailscale client software (or an equivalent) and then
+connect to your devices via their private addresses on a virtual LAN. This has
+advantages, but maybe a non-starter for some purposes that require public
+connectability.
+
+Relaying your connection is a final option -- GroundSeg's StarTram service,
+also built on top of Wireguard, forwards defined services to a publicly-connectable
+endpoint at will, allowing you to control which services public and which are not.
+In GroundSeg, this means giving Urbit ships a public subdomain with encryption,
+tunneled over another connection that is itself encrypted. 
 
 The integration of third-party relays, such as Native Planet's innovative
 StarTram service, amplifies the reliability and reach of your self-hosted
@@ -276,6 +314,8 @@ regions with varying internet speeds. By incorporating third-party relays,
 self-hosted servers can achieve unprecedented levels of accessibility,
 resilience, and user satisfaction, underscoring their crucial role in the
 modern era of personal server hosting.
+
+
 
 # Helpful advice
 
