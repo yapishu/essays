@@ -231,7 +231,7 @@ unit with the same socket specification.
 Generally speaking: newer is better. Moore's law holds, and a CPU released in
 2022 is almost always going to be better than one from 2015. 
 
-### Disk
+#### Disk
 
 Disk is long-term storage for your device -- all content that persists between
 reboots. Some services require significant disk space, but many uses require
