@@ -81,9 +81,11 @@ period with no distinction between humans and agency; après moi, le réseau.
 Going forward, what was once an ambiguously hostile but fundamentally
 comprehensible social environment will become increasingly dominated by a
 kaleidoscope of adversarial nonhuman agents. These agents are composed of
-probabilistic associations extracted from aggregated data. The best time to
-take up these tools and withdraw your data from of the corpus of training
-material was yesterday; the second-best is now.
+probabilistic associations extracted from aggregated data -- probabilities that
+you do not know and cannot comprehend, but which are built out of the minutiae
+of your day-to-day actions. There is no mutual trust to be had here. The best
+time to take up your own tools and withdraw your data from of the corpus of
+training material was yesterday; the second-best is now.
 
 Native Planet is an ideologically-motivated project. Our social coordination
 nexus -- our cooperative Schelling point -- is the desire to make self-hosting
