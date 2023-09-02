@@ -160,20 +160,19 @@ Opting for a Single Board Computer (SBC) such as a Raspberry Pi or a Latte
 Panda x86 as your personal server introduces its own advantages that set it
 apart from using a laptop or an old PC. 
 
-- **Compact** -- you can hide these in your building's ventilation.
+**Compact** -- you can hide these in your building's ventilation.
 
-- **Efficient** -- SBCs use very little power, and are typically designed to
-  run on power carried over USB -- a few watts at ~5A is common, on par with a
-  cell phone charger. This is low enough to run on auxiliary power sources for
-  prolonged periods.
+**Efficient** -- SBCs use very little power, and are typically designed to run
+on power carried over USB -- a few watts at ~5A is common, on par with a cell
+phone charger. This is low enough to run on auxiliary power sources for
+prolonged periods.
 
-- **Cheap** -- You can usually get one of these new for less than half the cost
-  of even a cheap desktop PC. Personal servers don't need to be able to play
-  CoD.
+**Cheap** -- You can usually get one of these new for less than half the cost
+of even a cheap desktop PC. Personal servers don't need to be able to play CoD.
 
-- **Purposeful** -- SBCs often have hardware accomodations for particular
-  use-cases, like network-attached storage, serving media, or IoT. This can
-  reduce complexity and cost if it aligns with your desired use-case.
+**Purposeful** -- SBCs often have hardware accomodations for particular
+use-cases, like network-attached storage, serving media, or IoT. This can
+reduce complexity and cost if it aligns with your desired use-case.
 
 ## Minimum specs
 
@@ -288,7 +287,7 @@ ways, but also means absolving yourself of sovereignty over your software.
 Instead of running your own services, you're renting CPU time on a mainframe.
 
 Private VPNs, like Tailscale, allow you to address the problem of public access
-without inheriting the security or privacy considerations that may entail. 
+without inheriting the security or privacy considerations that may entail.
 Tailscale is a networking framework built on top of Wireguard, that allows you
 to create private networks that are reachable from the public internet. Instead
 of publicly exposing your service, you can connect to a private network of your
@@ -298,24 +297,13 @@ advantages, but maybe a non-starter for some purposes that require public
 connectability.
 
 Relaying your connection is a final option -- GroundSeg's StarTram service,
-also built on top of Wireguard, forwards defined services to a publicly-connectable
-endpoint at will, allowing you to control which services public and which are not.
-In GroundSeg, this means giving Urbit ships a public subdomain with encryption,
-tunneled over another connection that is itself encrypted. 
-
-The integration of third-party relays, such as Native Planet's innovative
-StarTram service, amplifies the reliability and reach of your self-hosted
-server. These relays act as intermediaries, facilitating communication between
-your server and users by efficiently relaying data across networks. StarTram,
-for instance, boasts a global network of high-speed servers strategically
-positioned to optimize data transmission. Leveraging such services optimizes
-server performance, minimizes latency, and ensures consistent access even in
-regions with varying internet speeds. By incorporating third-party relays,
-self-hosted servers can achieve unprecedented levels of accessibility,
-resilience, and user satisfaction, underscoring their crucial role in the
-modern era of personal server hosting.
-
-
+also built on top of Wireguard, forwards defined services to a
+publicly-connectable endpoint at will, allowing you to control which services
+public and which are not. In GroundSeg, this means giving Urbit ships a public
+subdomain with encryption, tunneled over another connection that is itself
+encrypted. Additionally, sidecar services like self-hosted S3 buckets for
+media hosting are included out of the box, allowing you to host media for
+your communities without relying on a third party.
 
 # Helpful advice
 
