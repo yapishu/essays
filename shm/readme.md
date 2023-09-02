@@ -43,16 +43,30 @@ engineers -- but the field of privacy-oriented tech, built on the foundation of
 modern cryptography, is the contemporary rifle, or the equivalent of the
 printing press.
 
-'Security through obscurity' gets trotted out as a design fallacy, but it
-remains an important part of a defense-in-depth. As a general principle,
-information asymmetry advantages one agent over another. Observation allows for
-prediction. Being hidden, being hard to understand, can be a powerful shield;
-"being described is the prelude to being attacked." The US Federal government
-is estimated to classify 50 million documents a year; you are already in an
-arms race, even if you don't know it. This analogy runs both ways -- in an
-attempt to roll back public advances, strong cryptography was classified as a
-munition by the US State Department and remains subject to export restrictions.
-They don't want you to know this, but your ALU is a weapon.
+Digital technology seems mundane to us today -- most of us were born into a
+time when it was already mature and pervasive. Do not let this feeling lead you
+to complacency; we live in an era of magic. The powers available to Joe Nobody
+include zero marginal cost replication of information, effortless global
+communication, lossless archival and transmission of speech and images, and
+other wonders unimaginable to our ancestors. Encryption, the ability to keep a
+secret from observers, similarly has no prior parallel. This is effectively the
+power to conspire, enshrined in code as a natural right, and available to any
+who are willing to take it up. 'Conspire' might sound devious, but it is a
+fundamental freedom -- private coordination.
+
+'Security through obscurity' gets trotted out as a design fallacy, a cargo cult
+performance of actual security, but it remains an important part of a
+defense-in-depth. As a general principle, information asymmetry advantages one
+party over another. Observation allows for prediction. Being hidden, being hard
+to understand, can be a powerful shield; "being described is the prelude to
+being attacked." 
+
+The US Federal government is estimated to classify 50 million documents a year;
+you are already in an arms race, even if you don't know it. This analogy runs
+both ways -- in an attempt to roll back public advances, strong cryptography
+was classified as a munition by the US State Department and remains subject to
+export restrictions. They don't want you to know this, but your ALU is a
+weapon.
 
 Trusting your tools enough to defend yourself with them means being able to
 understand them well enough to model their behavior -- allowing someone else to
@@ -62,15 +76,20 @@ opting-out of the possibility.
 The best way to understand a tool is to use it. Our goal is to put the tools in
 your hands.
 
+Our moment is remarkable as a threshold between ages -- the last historical
+period with no distinction between humans and agency; après moi, le réseau.
+Going forward, what was once an ambiguously hostile but fundamentally
+comprehensible social environment will become increasingly dominated by a
+kaleidoscope of adversarial nonhuman agents. These agents are composed of
+probabilistic associations extracted from aggregated data. The best time to
+take up these tools and withdraw your data from of the corpus of training
+material was yesterday; the second-best is now.
+
 Native Planet is an ideologically-motivated project. Our social coordination
 nexus -- our cooperative Schelling point -- is the desire to make self-hosting
 easier and better than letting someone else run software for you. The price of
 the latter has become clear -- be observed, monitored, bucketed, modeled. The
 advantage of the former will become increasingly obvious as time goes on.
-
-Our moment is remarkable as a threshold between ages -- the last historical
-period with no distinction between humans and agency; après moi, le réseau.
-
 
 > i have seen many people spill their guts on-line, and i did so myself until,
 > at last, i began to see that i had commodified myself. commodification means
@@ -94,6 +113,8 @@ period with no distinction between humans and agency; après moi, le réseau.
 > cyberspace is liberation-speak. the reality is that cyberspace is an
 > increasingly efficient tool of surveillance with which people have a
 > voluntary relationship.
+
+-- *humdog*, 1994
 
 ---
 
@@ -288,29 +309,45 @@ Instead of running your own services, you're renting CPU time on a mainframe.
 
 Private VPNs, like Tailscale, allow you to address the problem of public access
 without inheriting the security or privacy considerations that may entail.
-Tailscale is a networking framework built on top of Wireguard, that allows you
-to create private networks that are reachable from the public internet. Instead
-of publicly exposing your service, you can connect to a private network of your
-devices running the Tailscale client software (or an equivalent) and then
-connect to your devices via their private addresses on a virtual LAN. This has
-advantages, but maybe a non-starter for some purposes that require public
-connectability.
+Tailscale is a networking framework built on top of the Wireguard VPN protocol,
+that allows you to create private networks that are reachable from the public
+internet. Instead of publicly exposing your service, you can connect to a
+private network of your devices running the Tailscale client software (or an
+equivalent) and then connect to your devices via their private addresses on a
+virtual LAN. This has advantages, but maybe a non-starter for some purposes
+that require public connectability.
 
 Relaying your connection is a final option -- GroundSeg's StarTram service,
 also built on top of Wireguard, forwards defined services to a
 publicly-connectable endpoint at will, allowing you to control which services
 public and which are not. In GroundSeg, this means giving Urbit ships a public
 subdomain with encryption, tunneled over another connection that is itself
-encrypted. Additionally, sidecar services like self-hosted S3 buckets for
-media hosting are included out of the box, allowing you to host media for
-your communities without relying on a third party.
+encrypted. Additionally, sidecar services like self-hosted S3 buckets for media
+hosting are included out of the box, allowing you to host media for your
+communities without relying on a third party. This option requires the least
+intervention on your part.
 
-# Helpful advice
+# Miscellaneous tips
 
-SmartPlugs
+- **Smart plugs** are useful for controlling power to devices and peripherals.
+  These alow you to turn devices on and off remotely.
 
-Bypass power buttons in system BIOS
+- **Bypass power buttons** in your system BIOS. Most commodity PC hardware
+  allows you to set your device to turn on immediately without intervention,
+  which you can make use of in conjunction with remotely controlled smart
+  plugs.
 
-Hardwire to the Internet rather than rely on WiFi
+- **Hardwire your network connection rather than relying on WiFi**: WiFi is
+  useful for client devices that don't need consistent uptime or are only in
+  use some of the time. Servers use uptime as a performance indicator -- they
+  need to be reachable and responsive as close to "always" as possible. WiFi
+  introduces latency and layers of complexity that act as points of failure,
+  which can impact the reliability of your servers. Tend toward wired
+  connections whenever possible.
 
-USB Cellular Modems
+- **USB Cellular Modems** -- Sometimes a wired connection isn't possible, and
+  even a WiFi connection is difficult to guarantee. In these situations, USB
+  LTE modems can provide connectivity for your devices, though this can become
+  expensive for high-throughput tasks. 
+
+- **Ignore all of our advice** -- there are no rules. Any computer is a server.
