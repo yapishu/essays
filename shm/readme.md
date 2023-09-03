@@ -246,7 +246,7 @@ will ensure you take full advantage of the speed of your SSD.
 
 **Minimum Requirements**: 128GB SSD
 
-**Recommend Requirements**: ≥500GB SSD
+**Recommend**: ≥500GB SSD
 
 ### Open Source Operating Systems & Software
 
