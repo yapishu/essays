@@ -1,4 +1,4 @@
-# Native Planet Corporate Values Statement & Employee Handbook
+# Improvised Computational Munitions Handbook
 
 ## theory: why we host
 
