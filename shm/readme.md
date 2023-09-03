@@ -1,4 +1,4 @@
-# Self-hosting manifesto
+# Native Planet Corporate Values Statement & Employee Handbook
 
 ## theory: why we host
 
